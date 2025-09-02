@@ -7,6 +7,9 @@ async function saveAlert(alert) {
     if (!alert || !alert.id || !alert.message) {
         throw new Error('Invalid alert structure. Missing id or message.');
     }
+    if (!TABLE_NAME) {
+        throw new Error('TABLE_NAME environment variable is not set.');
+    }
     const params = {
         TableName: TABLE_NAME,
         Item: alert
