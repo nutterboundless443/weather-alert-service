@@ -8,7 +8,12 @@ async function saveAlert(alert) {
         TableName: TABLE_NAME,
         Item: alert
     };
-    await documentClient.put(params).promise();
+    try {
+        await documentClient.put(params).promise();
+    } catch (error) {
+        console.error('Error saving alert:', error);
+        throw new Error('Could not save alert');
+    }
 }
 
 module.exports = { saveAlert };
