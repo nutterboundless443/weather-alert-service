@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
-const TABLE_NAME = 'WeatherAlerts';
+const TABLE_NAME = process.env.TABLE_NAME || 'WeatherAlerts';
 
 async function saveAlert(alert) {
     const params = {
