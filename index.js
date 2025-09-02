@@ -3,8 +3,8 @@ const sns = new AWS.SNS();
 
 exports.handler = async (event) => {
     // 获取天气数据逻辑
-    const weatherData = await getWeatherData();
-    const alertMessage = createAlert(weatherData);
+    const weatherData = await fetchWeatherData();
+    const alertMessage = createAlertMessage(weatherData);
     
     // 发送通知
     await sendNotification(alertMessage);
@@ -14,12 +14,12 @@ exports.handler = async (event) => {
     };
 };
 
-async function getWeatherData() {
+async function fetchWeatherData() {
     // 伪代码：获取天气数据逻辑
     return { temperature: 35, condition: 'storm' };
 }
 
-function createAlert(weatherData) {
+function createAlertMessage(weatherData) {
     // 伪代码：自定义预警生成逻辑
     return `当前温度为${weatherData.temperature}度，天气情况：${weatherData.condition}`;
 }
