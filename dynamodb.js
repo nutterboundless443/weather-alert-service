@@ -1,4 +1,4 @@
-const AWS = require('aws-sdk');
+import AWS from 'aws-sdk';
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
 const TABLE_NAME = process.env.TABLE_NAME || 'WeatherAlerts';
@@ -16,4 +16,4 @@ async function saveAlert(alert) {
     }
 }
 
-module.exports = { saveAlert };
+export { saveAlert };
