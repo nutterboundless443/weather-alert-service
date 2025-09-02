@@ -2,26 +2,26 @@ const AWS = require('aws-sdk');
 const sns = new AWS.SNS();
 
 exports.handler = async (event) => {
-    // 获取天气数据逻辑
+    // Logic to fetch weather data
     const weatherData = await fetchWeatherData();
     const alertMessage = createAlertMessage(weatherData);
     
-    // 发送通知
+    // Send notification
     await sendNotification(alertMessage);
     return {
         statusCode: 200,
-        body: JSON.stringify({ message: '天气预警发送成功!' })
+        body: JSON.stringify({ message: 'Weather alert sent successfully!' })
     };
 };
 
 async function fetchWeatherData() {
-    // 伪代码：获取天气数据逻辑
+    // Pseudo code: Logic to retrieve weather data
     return { temperature: 35, condition: 'storm' };
 }
 
 function createAlertMessage(weatherData) {
-    // 伪代码：自定义预警生成逻辑
-    return `当前温度为${weatherData.temperature}度，天气情况：${weatherData.condition}`;
+    // Pseudo code: Custom alert generation logic
+    return `Current temperature is ${weatherData.temperature} degrees, weather condition: ${weatherData.condition}`;
 }
 
 async function sendNotification(message) {
