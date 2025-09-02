@@ -12,7 +12,7 @@ async function saveAlert(alert) {
         await documentClient.put(params).promise();
     } catch (error) {
         console.error('Error saving alert:', error);
-        throw new Error('Could not save alert');
+        throw new Error('Could not save alert: ' + error.message);
     }
 }
 
